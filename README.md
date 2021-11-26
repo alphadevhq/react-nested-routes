@@ -11,8 +11,30 @@ This module will work only with the following versions:
 
 ## Example
 
-```js
-// Home.js
+```jsx
+// App.js
+import "./App.css";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./components/Home";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home/:tab" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+
+        <Route path="*" element={<Navigate replace to="/home" />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+```
+
+```jsx
+// ./components/Home.jsx
 import React from "react";
 import Tab from "./Tab";
 import { Link } from "react-router-dom";
@@ -57,8 +79,8 @@ const Home = () => {
 export default Home;
 ```
 
-```js
-// Tab.js
+```jsx
+// ./components/Home.jsx
 import React from "react";
 
 const Tab = (props) => {

@@ -1,7 +1,10 @@
 src/
 node_modules/
-coverage/
-*.test.js
 LICENSE
+.eslintrc
+.gitignore
+.travis.yaml
 pnpm-lock.yaml
-
+package-lock.json
+.bablerc
+react-nested-routes.gif
