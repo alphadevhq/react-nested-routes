@@ -1,0 +1,50 @@
+{
+  "name": "react-nested-routes",
+  "version": "0.0.3",
+  "description": "",
+  "main": "./lib/index",
+  "typings": "./lib/index",
+  "scripts": {
+    "prepublish": "npm run lint && npm run _build && npm run _test",
+    "build": "npm run lint && npm run _build",
+    "_build": "babel src --out-dir lib --ignore '**/*.test.js'",
+    "test": "npm run lint && npm run _test",
+    "posttest": "cowsay Your tests all passed!",
+    "_test": "echo",
+    "test:watch": "jest --watch",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "lint": "eslint src"
+  },
+  "author": "Abdhesh Nayak",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abdheshnayak/react-nested-routes.git"
+  },
+  "keywords": [
+    "react",
+    "routes",
+    "react-routes",
+    "nested-routes",
+    "tabbar",
+    "component",
+    "activepath",
+    "hook"
+  ],
+  "dependencies": {
+    "react-router": "^6.0.2",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^8.0.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
