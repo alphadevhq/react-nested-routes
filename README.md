@@ -80,7 +80,7 @@ export default Home;
 ```
 
 ```jsx
-// ./components/Home.jsx
+// ./components/Tab.jsx
 import React from "react";
 
 const Tab = (props) => {
