@@ -1,11 +1,12 @@
-import React from 'react';
-import { useLocation } from 'react-router';
+import React from "react";
+import { useLocation } from "react-router";
 
 const NestedRoute = (props) => {
-  const { children, path, parent } = props;
+  let { children, path, parent } = props;
+  path = path.toLowerCase();
   const history = useLocation();
-  const pathname = history.pathname;
-  const pathHistory = pathname.split('/');
+  const pathname = history.pathname.toLowerCase();
+  const pathHistory = pathname.split("/");
 
   const parentIndex = pathHistory.lastIndexOf(parent);
 
@@ -20,8 +21,9 @@ const NestedRoute = (props) => {
 
 export const useActivePath = ({ parent }) => {
   const history = useLocation();
-  const pathname = history.pathname;
-  const pathHistory = pathname.split('/');
+  const pathname = history.pathname.toLowerCase();
+  parent = parent.toLowerCase();
+  const pathHistory = pathname.split("/");
 
   const parentIndex = pathHistory.lastIndexOf(parent);
 
