@@ -7,7 +7,7 @@ const NestedRoute = (props) => {
   const pathname = history.pathname;
   const pathHistory = pathname.split('/');
 
-  const parentIndex = pathHistory.indexOf(parent);
+  const parentIndex = pathHistory.lastIndexOf(parent);
 
   let match;
 
@@ -23,7 +23,7 @@ export const useActivePath = ({ parent }) => {
   const pathname = history.pathname;
   const pathHistory = pathname.split('/');
 
-  const parentIndex = pathHistory.indexOf(parent);
+  const parentIndex = pathHistory.lastIndexOf(parent);
 
   let activeTab;
   if (parentIndex !== -1) {
