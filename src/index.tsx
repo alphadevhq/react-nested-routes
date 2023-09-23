@@ -1,7 +1,13 @@
 import React from "react";
 import { useLocation } from "react-router";
 
-const NestedRoute = (props) => {
+interface NestedRouteProps {
+  children: React.ReactNode;
+  path: string;
+  parent: string;
+}
+
+const NestedRoute = (props:NestedRouteProps) => {
   let { children, path, parent } = props;
   path = path.toLowerCase();
   const history = useLocation();
@@ -19,7 +25,9 @@ const NestedRoute = (props) => {
   return match ? children : <React.Fragment />;
 };
 
-export const useActivePath = ({ parent }) => {
+export const useActivePath = ({ parent }:{
+  parent: string;
+}) => {
   const history = useLocation();
   const pathname = history.pathname.toLowerCase();
   parent = parent.toLowerCase();

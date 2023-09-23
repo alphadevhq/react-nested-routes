@@ -1,22 +1,35 @@
 {
   "name": "react-nested-routes",
-  "version": "0.0.9",
-  "description": "",
-  "main": "./lib/index",
-  "typings": "./lib/index",
-  "scripts": {
-    "prepublish": "npm run lint && npm run _build && npm run _test",
-    "build": "npm run lint && npm run _build",
-    "_build": "babel src --out-dir lib --ignore '**/*.test.js'",
-    "test": "npm run lint && npm run _test",
-    "posttest": "cowsay Your tests all passed!",
-    "_test": "echo",
-    "test:watch": "jest --watch",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
-    "lint": "eslint src"
-  },
+  "version": "0.1.0",
   "author": "Abdhesh Nayak",
   "license": "MIT",
+  "description": "React nested routes is a react component which helps you to create nested routes in react application. It also provides a hook to get active path and active index of the route.",
+  "private": false,
+  "types": "./dist/@types/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run clean && node build.js && npm run tsc",
+    "clean": "rimraf dist",
+    "dev": "esbuild src/test.ts --bundle --format=cjs --outfile=out/index.cjs && node out/index.cjs",
+    "tsc": "tsc --emitDeclarationOnly --outDir ./dist/@types"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/abdheshnayak/react-nested-routes.git"
@@ -33,18 +46,37 @@
   ],
   "dependencies": {
     "react-router": "^6.0.2",
-    "react": "^17.0.2"
+    "react": "^17.0.2 || ^18.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2 || ^18.0.0",
+    "react-router": "^6.0.2",
+    "@types/react": "^18.2.22"
+  },
+  "peerDependenciesMeta": {
+    "@types/react": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^8.0.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "eslint": "^3.19.0",
-    "eslint-config-airbnb": "^15.0.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^5.0.3",
-    "eslint-plugin-react": "^7.5.1"
+    "@types/react": "^18.2.22",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
+    "esbuild": "^0.19.2",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-jsconfig": "^1.1.0",
+    "eslint-import-resolver-node": "^0.3.6",
+    "eslint-import-resolver-typescript": "^3.6.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prefer-arrow-functions": "^3.1.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.8.8",
+    "rimraf": "^5.0.1",
+    "typescript": "^5.2.2"
   }
 }
